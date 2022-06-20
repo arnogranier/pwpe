@@ -20,9 +20,12 @@ def connect_subplots(ax1, ax2, arrowstyle="-|>,head_width=1,head_length=1", **kw
     ycenter1 = sum(ax2.get_ylim())/2
     xright0 = ax1.get_xlim()[1]
     xleft1 = ax2.get_xlim()[0]
-    return ax2.add_artist(ConnectionPatch(xyA=(xright0,ycenter0), xyB=(xleft1,ycenter1),
-                                          coordsA="data", coordsB="data", axesA=ax1, axesB=ax2,
-                                          lw=3, arrowstyle=arrowstyle, fc='black', **kwargs))
+    return ax2.add_artist(ConnectionPatch(xyA=(xright0,ycenter0), 
+                                          xyB=(xleft1,ycenter1),
+                                          coordsA="data", coordsB="data", 
+                                          axesA=ax1, axesB=ax2,
+                                          lw=3, arrowstyle=arrowstyle, 
+                                          fc='black', **kwargs))
 
 def gaussian2dplot(ax, m, cloud, points=None, vs=None):
     """Plot a gaussian cloud with confidence ellipse, a potential set of two points and principal components
@@ -46,13 +49,15 @@ def gaussian2dplot(ax, m, cloud, points=None, vs=None):
         ax.plot([m[0], points[0,0]], [m[1], points[0,1]], '--k', lw='3')
         ax.plot([m[0], points[1,0]], [m[1], points[1,1]], '--k', lw='3')
     if vs is not None:
-        ax.arrow(m[0], m[1], vs[0,0], vs[1,0], lw='3', ls='-', edgecolor='blue', head_width=.3, head_length=.3)
-        ax.arrow(m[0], m[1], vs[0,1], vs[1,1], lw='3', ls='-', edgecolor='blue', head_width=.3, head_length=.3)
+        ax.arrow(m[0], m[1], vs[0,0], vs[1,0], lw='3', ls='-', edgecolor='blue', 
+                 head_width=.3, head_length=.3)
+        ax.arrow(m[0], m[1], vs[0,1], vs[1,1], lw='3', ls='-', edgecolor='blue', 
+                 head_width=.3, head_length=.3)
     return ax
 
-# Confidence ellipse helper function from https://matplotlib.org/stable/gallery/statistics/confidence_ellipse.html
 def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     """Create a plot of the covariance confidence ellipse of *x* and *y*.
+    Confidence ellipse helper function from https://matplotlib.org/stable/gallery/statistics/confidence_ellipse.html
     
     Args:
         x (array-like, shape (n, )): Input data.
